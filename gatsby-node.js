@@ -6,6 +6,8 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     const blogPost = path.resolve('./src/templates/blog-post.js')
+    const about = path.resolve('./src/pages/about.js')
+
     resolve(
       graphql(
         `
@@ -15,6 +17,14 @@ exports.createPages = ({ graphql, actions }) => {
                 node {
                   title
                   slug
+                }
+              }
+            }
+            allContentfulPages {
+              nodes {
+                title
+                aboutText {
+                  aboutText
                 }
               }
             }
